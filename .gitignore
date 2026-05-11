@@ -5,8 +5,7 @@
 .env.production
 .phpactor.json
 .phpunit.result.cache
-/.codex
-/.cursor/
+/.fleet
 /.idea
 /.nova
 /.phpunit.cache
@@ -14,13 +13,13 @@
 /.zed
 /auth.json
 /node_modules
-/public/build
 /public/hot
-/public/storage
 /storage/*.key
+*.sqlite
+*.sqlite-journal
+/whyfinder_laravel
 /storage/pail
 /vendor
-_ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db

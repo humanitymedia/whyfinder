@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1000 1000">
+  <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#linear-gradient2);
+      }
+
+      .st1 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st2 {
+        fill: url(#linear-gradient);
+      }
+
+      .st3 {
+        display: none;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="2023.33" y1="507.29" x2="2831.28" y2="507.29" gradientTransform="translate(2904) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="red"/>
+      <stop offset=".09" stop-color="#ff0808" stop-opacity=".97"/>
+      <stop offset=".22" stop-color="#ff1f1f" stop-opacity=".87"/>
+      <stop offset=".39" stop-color="#ff4646" stop-opacity=".73"/>
+      <stop offset=".59" stop-color="#ff7a7a" stop-opacity=".52"/>
+      <stop offset=".81" stop-color="#ffbdbd" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="760.28" y1="539.49" x2="171.1" y2="539.49" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient2" x1="529.49" y1="292.72" x2="396.26" y2="292.72" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#linear-gradient"/>
+  </defs>
+  <rect class="st3" x="-.22" width="1000" height="1000"/>
+  <path class="st2" d="M476.69,911.26c-222.75,0-403.97-181.23-403.97-403.97S253.94,103.31,476.69,103.31s403.97,181.23,403.97,403.97-181.23,403.97-403.97,403.97ZM476.69,118.7c-214.27,0-388.59,174.32-388.59,388.59s174.32,388.59,388.59,388.59,388.59-174.32,388.59-388.59S690.96,118.7,476.69,118.7Z"/>
+  <path class="st1" d="M760.28,289.07l-251.39,280.51v220.34h-83.47v-218.39l-254.31-282.45h103.86l196.07,223.25,187.33-223.25h101.92Z"/>
+  <circle class="st0" cx="462.87" cy="292.72" r="66.61"/>
+</svg>
