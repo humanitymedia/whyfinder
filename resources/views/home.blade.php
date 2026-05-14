@@ -2,18 +2,17 @@
     <x-slot name="title">WhyFinder — Discover Your Why. Build Your Life.</x-slot>
 
     @php
-        use App\Models\Setting;
-        $heroImage = Setting::get('home_hero_image');
-        $heroEyebrow = Setting::get('home_hero_eyebrow', 'Your Purpose Is Waiting');
-        $heroHeadline = Setting::get('home_hero_headline', 'Discover Your Why.<br>Build Your Life.');
-        $heroSubhead = Setting::get('home_hero_subhead', 'Free courses to help you find your purpose. Paid courses to help you build a business and life around it. Start your journey today.');
-        $heroCtaPrimary = Setting::get('home_hero_cta_primary', 'Start Free Course');
-        $heroCtaSecondary = Setting::get('home_hero_cta_secondary', 'Browse Courses');
-        $hiwIntro = Setting::get('how_it_works_intro', 'Three simple steps to discovering your purpose and building a life around it.');
+        $heroImage = \App\Models\Setting::get('home_hero_image');
+        $heroEyebrow = \App\Models\Setting::get('home_hero_eyebrow', 'Your Purpose Is Waiting');
+        $heroHeadline = \App\Models\Setting::get('home_hero_headline', 'Discover Your Why.<br>Build Your Life.');
+        $heroSubhead = \App\Models\Setting::get('home_hero_subhead', 'Free courses to help you find your purpose. Paid courses to help you build a business and life around it. Start your journey today.');
+        $heroCtaPrimary = \App\Models\Setting::get('home_hero_cta_primary', 'Start Free Course');
+        $heroCtaSecondary = \App\Models\Setting::get('home_hero_cta_secondary', 'Browse Courses');
+        $hiwIntro = \App\Models\Setting::get('how_it_works_intro', 'Three simple steps to discovering your purpose and building a life around it.');
         $hiwSteps = [
-            ['title' => Setting::get('how_it_works_step1_title', 'Find Your Why'), 'body' => Setting::get('how_it_works_step1_body', 'Take our free course to uncover your passions, strengths, and the purpose that drives you.')],
-            ['title' => Setting::get('how_it_works_step2_title', 'Build Your Skills'), 'body' => Setting::get('how_it_works_step2_body', 'Learn practical skills like website building, branding, marketing, and entrepreneurship from real instructors.')],
-            ['title' => Setting::get('how_it_works_step3_title', 'Live Your Purpose'), 'body' => Setting::get('how_it_works_step3_body', 'Apply what you learn to build a business and life that aligns with who you truly are.')],
+            ['title' => \App\Models\Setting::get('how_it_works_step1_title', 'Find Your Why'), 'body' => \App\Models\Setting::get('how_it_works_step1_body', 'Take our free course to uncover your passions, strengths, and the purpose that drives you.')],
+            ['title' => \App\Models\Setting::get('how_it_works_step2_title', 'Build Your Skills'), 'body' => \App\Models\Setting::get('how_it_works_step2_body', 'Learn practical skills like website building, branding, marketing, and entrepreneurship from real instructors.')],
+            ['title' => \App\Models\Setting::get('how_it_works_step3_title', 'Live Your Purpose'), 'body' => \App\Models\Setting::get('how_it_works_step3_body', 'Apply what you learn to build a business and life that aligns with who you truly are.')],
         ];
         $hiwIcons = [
             '<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />',
