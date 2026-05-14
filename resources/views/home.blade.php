@@ -1,27 +1,55 @@
 <x-public-layout>
     <x-slot name="title">WhyFinder — Discover Your Why. Build Your Life.</x-slot>
 
+    @php
+        use App\Models\Setting;
+        $heroImage = Setting::get('home_hero_image');
+        $heroEyebrow = Setting::get('home_hero_eyebrow', 'Your Purpose Is Waiting');
+        $heroHeadline = Setting::get('home_hero_headline', 'Discover Your Why.<br>Build Your Life.');
+        $heroSubhead = Setting::get('home_hero_subhead', 'Free courses to help you find your purpose. Paid courses to help you build a business and life around it. Start your journey today.');
+        $heroCtaPrimary = Setting::get('home_hero_cta_primary', 'Start Free Course');
+        $heroCtaSecondary = Setting::get('home_hero_cta_secondary', 'Browse Courses');
+        $hiwIntro = Setting::get('how_it_works_intro', 'Three simple steps to discovering your purpose and building a life around it.');
+        $hiwSteps = [
+            ['title' => Setting::get('how_it_works_step1_title', 'Find Your Why'), 'body' => Setting::get('how_it_works_step1_body', 'Take our free course to uncover your passions, strengths, and the purpose that drives you.')],
+            ['title' => Setting::get('how_it_works_step2_title', 'Build Your Skills'), 'body' => Setting::get('how_it_works_step2_body', 'Learn practical skills like website building, branding, marketing, and entrepreneurship from real instructors.')],
+            ['title' => Setting::get('how_it_works_step3_title', 'Live Your Purpose'), 'body' => Setting::get('how_it_works_step3_body', 'Apply what you learn to build a business and life that aligns with who you truly are.')],
+        ];
+        $hiwIcons = [
+            '<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />',
+            '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />',
+            '<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />',
+        ];
+    @endphp
+
     {{-- Hero Section --}}
     <section class="relative bg-brand-brown overflow-hidden">
+        @if($heroImage)
+            <img src="{{ \Illuminate\Support\Facades\Storage::url($heroImage) }}" alt="" class="absolute inset-0 w-full h-full object-cover">
+        @endif
         <div class="absolute inset-0 bg-gradient-to-r from-brand-brown/90 to-brand-brown/70"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
             <div class="max-w-2xl">
-                <p class="text-brand-red text-sm font-bold uppercase tracking-widest mb-4">Your Purpose Is Waiting</p>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                    Discover Your Why.<br>Build Your Life.
-                </h1>
-                <p class="text-lg text-gray-300 mb-8 leading-relaxed">
-                    Free courses to help you find your purpose. Paid courses to help you build a business and life around it. Start your journey today.
-                </p>
+                @if($heroEyebrow)
+                    <p class="text-brand-red text-sm font-bold uppercase tracking-widest mb-4">{{ $heroEyebrow }}</p>
+                @endif
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">{!! $heroHeadline !!}</h1>
+                @if($heroSubhead)
+                    <p class="text-lg text-gray-300 mb-8 leading-relaxed">{{ $heroSubhead }}</p>
+                @endif
                 <div class="flex flex-wrap gap-4">
-                    <a href="{{ route('register') }}"
-                       class="inline-flex items-center px-8 py-3 bg-brand-red text-white font-semibold rounded-full hover:bg-red-700 transition-colors text-sm">
-                        Start Free Course
-                    </a>
-                    <a href="{{ route('courses.index') }}"
-                       class="inline-flex items-center px-8 py-3 bg-white/10 text-white font-semibold rounded-full hover:bg-white/20 transition-colors border border-white/20 text-sm">
-                        Browse Courses
-                    </a>
+                    @if($heroCtaPrimary)
+                        <a href="{{ route('register') }}"
+                           class="inline-flex items-center px-8 py-3 bg-brand-red text-white font-semibold rounded-full hover:bg-red-700 transition-colors text-sm">
+                            {{ $heroCtaPrimary }}
+                        </a>
+                    @endif
+                    @if($heroCtaSecondary)
+                        <a href="{{ route('courses.index') }}"
+                           class="inline-flex items-center px-8 py-3 bg-white/10 text-white font-semibold rounded-full hover:bg-white/20 transition-colors border border-white/20 text-sm">
+                            {{ $heroCtaSecondary }}
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -32,39 +60,22 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-brand-dark mb-4">How It Works</h2>
-                <p class="text-brand-gray max-w-2xl mx-auto">Three simple steps to discovering your purpose and building a life around it.</p>
+                @if($hiwIntro)
+                    <p class="text-brand-gray max-w-2xl mx-auto">{{ $hiwIntro }}</p>
+                @endif
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                {{-- Step 1 --}}
-                <div class="text-center p-8">
-                    <div class="w-16 h-16 bg-red-50 text-brand-red rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
+                @foreach($hiwSteps as $i => $step)
+                    <div class="text-center p-8">
+                        <div class="w-16 h-16 bg-red-50 text-brand-red rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                {!! $hiwIcons[$i] !!}
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-dark mb-3">{{ $step['title'] }}</h3>
+                        <p class="text-brand-gray leading-relaxed">{{ $step['body'] }}</p>
                     </div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-3">Find Your Why</h3>
-                    <p class="text-brand-gray leading-relaxed">Take our free course to uncover your passions, strengths, and the purpose that drives you.</p>
-                </div>
-                {{-- Step 2 --}}
-                <div class="text-center p-8">
-                    <div class="w-16 h-16 bg-red-50 text-brand-red rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-3">Build Your Skills</h3>
-                    <p class="text-brand-gray leading-relaxed">Learn practical skills like website building, branding, marketing, and entrepreneurship from real instructors.</p>
-                </div>
-                {{-- Step 3 --}}
-                <div class="text-center p-8">
-                    <div class="w-16 h-16 bg-red-50 text-brand-red rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-3">Live Your Purpose</h3>
-                    <p class="text-brand-gray leading-relaxed">Apply what you learn to build a business and life that aligns with who you truly are.</p>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
+use App\Http\Controllers\Admin\ContentController as AdminContentController;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\ForumController as AdminForumController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
@@ -119,6 +120,12 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     // Course management
     Route::get('/courses', [AdminCourseController::class, 'index'])->name('courses.index');
     Route::get('/courses/{course}', [AdminCourseController::class, 'show'])->name('courses.show');
+
+    // Content (home page hero, How It Works, branding)
+    Route::get('/content', [AdminContentController::class, 'index'])->name('content.index');
+    Route::post('/content/branding', [AdminContentController::class, 'updateBranding'])->name('content.branding.update');
+    Route::post('/content/hero', [AdminContentController::class, 'updateHero'])->name('content.hero.update');
+    Route::put('/content/how-it-works', [AdminContentController::class, 'updateHowItWorks'])->name('content.how-it-works.update');
 
     // Settings
     Route::get('/settings', [AdminSettingsController::class, 'index'])->name('settings.index');
